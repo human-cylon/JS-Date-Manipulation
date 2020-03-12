@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Italianno&display=swap" rel="stylesheet">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* this is necessary for vertical alignment to work properly */
+}
+
+body {
+    margin: 0;
+} /* this is necessary for vertical alignment to work properly */
+
+#countdown {
+    font-family: 'Italianno';
+    font-size: 12vh;
+}
+
+.flex-container {
+    display: flex;
+    margin: auto;
+    height: 90vh;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+</style>
+<title></title>
+</head>
+<body onload="howManyDays()">
+<div class="flex-container">
+    <div id="countdown">It's been <br/>
+            <span id="num" style="font-size: 2em;"></span>
+             days, 
+            <span id="hrs" style="font-size: 2em;"></span>
+            hours and
+            <span id="mnts" style="font-size: 2em;"></span> minutes<br/> since we got married
+    </div>
+    
+</div>
+
+<div id="test"></div>
+<script>
+function howManyDays() {
+var today = Date.now(); // current date in milliseconds from Jan 1, 1970
+var wedding = new Date("2018-01-13T07:00:00Z");
+var weddingMsc = Date.parse(wedding); // our wedding date in milliseconds from Jan 1, 1970
+var numberOfDays = Math.floor((today - weddingMsc) / 86400000); // 86400000 is the number of milliseconds in 24 hours
+var numberOfHours = Math.floor((today - weddingMsc) / 3600000) - numberOfDays * 24;
+var numberOfMinutes = Math.floor((today - weddingMsc) / 60000) - numberOfHours * 60 - numberOfDays * 24 * 60;
+document.getElementById("num").innerHTML = numberOfDays;
+document.getElementById("hrs").innerHTML = numberOfHours;
+document.getElementById("mnts").innerHTML = numberOfMinutes;
+}
+
+</script>
+
+</body>
+</html>
